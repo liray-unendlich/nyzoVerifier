@@ -9,7 +9,7 @@ If you are interested in this project, we recommend reading our white paper: htt
 自分用まとめ(For Vultr, root only)
 
 ```
-sudo apt update && sudo apt upgrade && sudo apt install haveged openjdk-8-jdk supervisor -y
+sudo apt update && sudo apt upgrade -y && sudo apt install haveged openjdk-8-jdk supervisor -y
 ```
 
 ```
