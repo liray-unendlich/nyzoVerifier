@@ -13,7 +13,7 @@ sudo apt update && sudo apt upgrade && sudo apt install haveged openjdk-8-jdk su
 ```
 
 ```
-git clone https://github.com/n-y-z-o/nyzoVerifier.git && cd nyzoVerifier && ./gradlew build
+git clone https://github.com/liray-unendlich/nyzoVerifier.git && cd nyzoVerifier && ./gradlew build
 ```
 
 ```
