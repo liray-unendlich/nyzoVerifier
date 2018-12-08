@@ -6,6 +6,36 @@ If you are interested in this project, we recommend reading our white paper: htt
 
 **Please note: the proof-of-diversity system requires that new verifiers be added to the cycle at a controlled rate. The length of time that a verifier must wait is related to the current cycle length and the number of verifiers waiting to join. As the cycle length increases, this may be a considerable amount of time. For instance, with a cycle length of 500, the minimum spacing between new verifiers will be approximately 2 hours. Please consult the Nyzo white paper for further details.**
 
+自分用まとめ(For Vultr, root only)
+
+```
+sudo apt update && sudo apt upgrade && sudo apt install haveged openjdk-8-jdk supervisor -y
+```
+
+```
+git clone https://github.com/n-y-z-o/nyzoVerifier.git && cd nyzoVerifier && ./gradlew build
+```
+
+```
+sudo mkdir -p /var/lib/nyzo/production && sudo cp trusted_entry_points /var/lib/nyzo/production && sudo cp nyzoVerifier.conf /etc/supervisor/conf.d/
+```
+
+```
+sudo bash -c 'echo "VERIFIER_NICKNAME" > /var/lib/nyzo/production/nickname'
+```
+
+(適当に "VERIFIER_NICKNAME"は変える)
+
+例:
+```
+sudo bash -c 'echo "liray01" > /var/lib/nyzo/production/nickname'
+```
+
+```
+sudo supervisorctl reload
+```
+で完了
+
 To start your own verifier, we recommend creating a t3.micro AWS instance with the latest Ubuntu LTS version, a 30GB EBS volume, and port 9444 incoming open to the world (TCP only; weird stuff can happen if you open UDP, too). Also, open the SSH port to your IP address so you can access the instance. Then, when you have SSHed into the instance, run the following commands (enter each command separately):
 
 ```
